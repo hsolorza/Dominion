@@ -1,4 +1,4 @@
-package org.cs362.dominion;
+// package Dominion;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,14 @@ import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
 
+
+import Dominion.Card.java;
+import Dominion.dominion.java;
+import Dominion.mainPlayer.java;
+import Dominion.mainCard.java;
+import Dominion.Player.java;
+import Dominion.Randomness.java;
+import Dominion.mainRandomness.java;
 //struct gameState {
 //   int numPlayers;
 //number of players
@@ -84,10 +92,12 @@ public class GameState implements Cloneable{
     gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
     gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), 46);
 
+    // give 7 copper card
     for (Player player : players) {
        for (int i = 0; i < 7; i++)
        player.gain(Card.getCard(cards,Card.CardName.Cooper));
 
+       //give 3 estate cards
        for (int i = 0; i < 3; i++)
         player.gain(Card.getCard(cards,Card.CardName.Estate));
         player.numActions = 1;

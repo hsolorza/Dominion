@@ -1,39 +1,47 @@
-package org.cs362.dominion;
+// package Dominion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
+import Dominion.Card.java;
+import Dominion.dominion.java;
+import Dominion.GameState.java;
+import Dominion.mainCard.java;
+import Dominion.Player.java;
+import Dominion.Randomness.java;
+import Dominion.mainRandomness.java;
 public class mainPlayer {
-	public  static void main(String args[]){			
+	public  static void main(String args[]){
 		  //set up random number generator
 		// To know about the reason of using the seed https://en.wikipedia.org/wiki/Pseudorandom_number_generator
-		
-		Randomness.reset(10);	   
+
+		Randomness.reset(10);
 
 		List<Card> cards=new LinkedList<Card>();
-		//the cards  are achieved by each element/constant in the enum class 
+		//the cards  are achieved by each element/constant in the enum class
 		cards = new ArrayList<Card>(Card.createCards());
 
 		 Player player = new Player(null,"aburasa");
-		 System.out.println("Player-1 information:\n " + player.toString()); 
-		 
+		 System.out.println("Player-1 information:\n " + player.toString());
+
          for (int i = 0; i < 7; i++)
 	            player.gain(Card.getCard(cards,Card.CardName.Gold));
-         
+
          player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
-  
-         
+
+
          player.initializePlayerTurn();
-         
-         System.out.println("Player-1 information:\n " + player.toString()); 
-         
+
+         System.out.println("Player-1 information:\n " + player.toString());
+
          player.drawCard();
-        	 	
+
          player.playKingdomCard();
-		 
-		System.exit(0);   
+
+		System.exit(0);
 	}
 
 }
