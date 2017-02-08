@@ -1,15 +1,10 @@
-package dominion;
+package org.cs362.dominion;
 
 import java.util.List;
 import java.util.Random;
 
-// import dominion.Card.java;
-// import dominion.dominion.java;
-// import dominion.GameState.java;
-// import dominion.mainPlayer.java;
-// import dominion.mainCard.java;
-// import dominion.Player.java;
-// import dominion.mainRandomness.java;
+
+
 
 public final class Randomness {
 
@@ -19,7 +14,7 @@ public final class Randomness {
   public static final long SEED = 0;
 
   /**
-   * The random number used any testtime a random choice is made.
+   * The random number used any testtime a random choice is made. 
    */
  public static Random random = new Random();
 
@@ -29,7 +24,7 @@ public final class Randomness {
 
   public static int totalCallsToRandom = 0;
 
-
+ 
   /**
    * Uniformly random int from [0, i)
    */
@@ -44,13 +39,13 @@ public final class Randomness {
   }
 
 	public  static void main(String args[]){
-
-//		Randomness.reset(10);
+		
+//		Randomness.reset(10);	   
 
 		for(int i=0; i<10;i++){
 			System.out.println("value=: "+ Randomness.nextRandomInt(10));
 		}
-		System.exit(0);
+		System.exit(0);   
 	}
 
 
