@@ -1,4 +1,4 @@
-// package Dominion;
+package dominion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Collections;
 
 
-import Dominion.Card.java;
-import Dominion.dominion.java;
-import Dominion.GameState.java;
-import Dominion.mainPlayer.java;
-import Dominion.mainCard.java;
-import Dominion.Player.java;
-import Dominion.Randomness.java;
-import Dominion.mainRandomness.java;
+// import dominion.Card.java;
+// import dominion.dominion.java;
+// import dominion.GameState.java;
+// import dominion.mainPlayer.java;
+// import dominion.mainCard.java;
+// import dominion.Player.java;
+// import dominion.Randomness.java;
+// import dominion.mainRandomness.java;
 
 
 public class PlayDominion {
@@ -30,7 +30,7 @@ public class PlayDominion {
 			//the cards  are achieved by each element/constant in the enum class
 			cards = new ArrayList<Card>(Card.createCards());
 			state = new GameState(cards);
-//			 System.out.println("Initialization DominionBoard:\n " + state.toString());
+//			 System.out.println("Initialization dominionBoard:\n " + state.toString());
 
 		      Player player = new Player(state, "player-1");
 //		      player.printStateGame();
@@ -45,7 +45,7 @@ public class PlayDominion {
 		      //Initialize the game!
 		      state.initializeGame();
 
-		      System.out.println("Initialization DominionBoard:\n " + state.toString());
+		      System.out.println("Initialization dominionBoard:\n " + state.toString());
 
 		      HashMap<Player, Integer> winners=state.play();
 		      System.out.println ("Finished game.\n");

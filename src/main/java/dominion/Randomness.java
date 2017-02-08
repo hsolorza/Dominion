@@ -1,15 +1,15 @@
-// package Dominion;
+package dominion;
 
 import java.util.List;
 import java.util.Random;
 
-import Dominion.Card.java;
-import Dominion.dominion.java;
-import Dominion.GameState.java;
-import Dominion.mainPlayer.java;
-import Dominion.mainCard.java;
-import Dominion.Player.java;
-import Dominion.mainRandomness.java;
+// import dominion.Card.java;
+// import dominion.dominion.java;
+// import dominion.GameState.java;
+// import dominion.mainPlayer.java;
+// import dominion.mainCard.java;
+// import dominion.Player.java;
+// import dominion.mainRandomness.java;
 
 public final class Randomness {
 

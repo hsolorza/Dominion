@@ -1,18 +1,18 @@
-// package Dominion;
+package dominion;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import Dominion.Card.Type;
+import dominion.Card.Type;
 
-import Dominion.Card.java;
-import Dominion.dominion.java;
-import Dominion.GameState.java;
-import Dominion.mainPlayer.java;
-import Dominion.mainCard.java;
-import Dominion.Randomness.java;
-import Dominion.mainRandomness.java;
+// import dominion.Card.java;
+// import dominion.dominion.java;
+// import dominion.GameState.java;
+// import dominion.mainPlayer.java;
+// import dominion.mainCard.java;
+// import dominion.Randomness.java;
+// import dominion.mainRandomness.java;
 
 public class Player implements Cloneable{
 	List<Card> hand = new ArrayList<Card>();// int hand[MAX_PLAYERS][MAX_HAND];
@@ -86,7 +86,7 @@ public class Player implements Cloneable{
 		   }
 	   public void playKingdomCard() {
 		      while (numActions > 0) {
-		         List<Card> actionCards = Card.filter(hand, Type.ACTION);
+		         List<Card> actionCards = Card.filter(hand, Card.Type.ACTION);
 
 		         if (actionCards.size() == 0)
 		            return;

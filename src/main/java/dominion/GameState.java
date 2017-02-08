@@ -1,4 +1,4 @@
-// package Dominion;
+package dominion;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.TreeMap;
 
 
-import Dominion.Card.java;
-import Dominion.dominion.java;
-import Dominion.mainPlayer.java;
-import Dominion.mainCard.java;
-import Dominion.Player.java;
-import Dominion.Randomness.java;
-import Dominion.mainRandomness.java;
+// import dominion.Card.java;
+// import dominion.dominion.java;
+// import dominion.mainPlayer.java;
+// import dominion.mainCard.java;
+// import dominion.Player.java;
+// import dominion.Randomness.java;
+// import dominion.mainRandomness.java;
+
 //struct gameState {
 //   int numPlayers;
 //number of players
