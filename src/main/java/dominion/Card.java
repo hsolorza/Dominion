@@ -12,7 +12,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 	public static enum CardName {
 		/** The Treasure cards */
-		GOLD("Gold", TREASURE, 6, ), SILVER, COPPER,
+		GOLD, SILVER, COPPER,
 		/** The Victory cards */
 		PROVIDENCE,DUCHY,ESTATE,CURSE,
 		/** The Kingdom cards */
@@ -80,8 +80,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 
 		/** The Victory cards  */
-		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);
-		ret.add(o);
 		o = new Card(CardName.Duchy,Type.VICTORY,		5, 1, 0);
 		ret.add(o);
 		o = new Card(CardName.Estate,Type.VICTORY,		2, 3, 0);
@@ -90,20 +88,25 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Gardens, Type.VICTORY,  4, 666, 0);
 		ret.add(o);
-		o = new Card(CardName.Embargo, Type.Victory, 2, 0, 0);
+		o = new Card(CardName.Duchy, Type.VICTORY,  4, 666, 0);
 		ret.add(o);
 
 		/** The Kingdom cards , it should more than 10 cards*/
 
-		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);
+		o = new Card(CardName.Adventurer,Type.ACTION, 6, 0, 0);
 		ret.add(o);
-		o = new Card(CardName.Smithy,Type.ACTION,4,0,0);
+		o = new Card(CardName.Ambassador,Type.ACTION, 	3, 0, 0);
 		ret.add(o);
-		o = new Card(CardName.Village,Type.ACTION,3,0,0);
+		o = new Card(CardName.Smithy,Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Village,Type.ACTION, 3, 0, 0);
 		ret.add(o);
 		o = new Card(CardName.Salvager, Type.ACTION, 4, 0, 0);
 		ret.add(o);
-
+		o = new Card(CardName.Baron, Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Council_Room, Type.ACTION, 5, 0, 0);
+		ret.add(o);
 
 		return ret;
 	}
@@ -125,10 +128,13 @@ public final class Card implements Comparable<Card>, Cloneable{
 			return;
 
 		case Village:
-	    	  System.out.println("TODO Village Code******************************************");
-	    	  System.out.println("The player draw +1 Card.");
-	    	  System.out.println("The player gets +2 play Actions.");
+	    	  player.drawCard();
+					player.numActions  = player.numActions + 2;
+	    	  System.out.println("The player gets +2 play Actions and draws 1 card.");
 			return;
+
+
+
 
 
 		default: return;
