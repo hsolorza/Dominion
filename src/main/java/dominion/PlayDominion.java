@@ -23,14 +23,11 @@ public class PlayDominion {
 			 System.out.println("Initialization DominionBoard:\n " + state.toString());
 
 		      Player player = new Player(state, "player-1");
-		      player.printStateGame();
-		         player.hand.add(Card.getCard(cards,Card.CardName.Adventurer));
-		         player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-
+		      //player.printStateGame();
 		      state.addPlayer(player);
-		       player = new Player(state, "player-2");
-		         player.hand.add(Card.getCard(cards,Card.CardName.Smithy));
-		         player.hand.add(Card.getCard(cards,Card.CardName.Village));
+
+
+		      player = new Player(state, "player-2");
 		      state.addPlayer(player);
 		      //Initialize the game!
 		      state.initializeGame();

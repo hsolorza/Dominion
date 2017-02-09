@@ -17,12 +17,12 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 	public static enum CardName {
 		/** The Treasure cards */
-		GOLD, SILVER, COPPER,
+		Gold, Silver, Copper,
 		/** The Victory cards */
-		PROVIDENCE,DUCHY,ESTATE,CURSE,
+		Province, Duchy, Estate, Curse, Gardens,
 		/** The Kingdom cards */
-		ADVENTURER, AMBASSADOR, BARON, COUNCIL_ROOM, CUTPURSE, EMBARGO,
-		FEAST, MINE, SALVAGER, SMITHY, VILLAGE;
+		Adventurer, Ambassador, Baron, Council_Room, Cutpurse, Embargo,
+		Feast, Mine, Salvager, Smithy, Village;
 	}
 	/**
 	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
@@ -147,20 +147,21 @@ public final class Card implements Comparable<Card>, Cloneable{
 						"up to 2 copies of it from your hand to the Supply. Then each"+
 						"player gains a copy of it.");
 
-						Card c = player.hand[0];
-						
+						//Card c = player.hand[0];
+
 			return;
 		case Baron:
-					System.out.println("Baron: +1 Buy. If player chooses to discard an" +"
-					 		estate, +4 . Else gain an estate" );
+					// +1 Buy. If player choosed to discard an estate, +4. Else, gain an estate
+					System.out.println("Card Baron");
 
 					player.numBuys = player.numBuys + 1;
 
-					if(player.discard(Card.Estate)){
+					if(getCard(player.hand, CardName.Estate) != null){
+						player.discard(getCard(player.hand, CardName.Estate));
 						player.coins = player.coins + 4;
 					}
 					else{
-						player.gain(Card.Estate);
+						player.gain(getCard(state.cards, CardName.Estate));
 					}
 
 			return;
@@ -182,7 +183,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 							"Embargo token on top of a supply pile");
 
 					player.coins = player.coins + 2;
-					player.discard(Card.Embargo);
+					player.discard(getCard(player.hand, CardName.Embargo));
 
 					GameState gs = player.gameState;
 			return;
@@ -190,23 +191,22 @@ public final class Card implements Comparable<Card>, Cloneable{
 					System.out.println("Feast: Trash this card. Gain a card worth up to" +
 						"5 money");
 
-					player.discard(Card.Feast);
+					player.discard(getCard(player.hand, CardName.Feast));
 					Card c;
 					do{
-						c = grabSomeCards();
+						c = player.grabSomeCards();
 						if(c.cost <= 5){
 							player.hand.add(c);
 							break;
 						}
-					}while(c.cost <= 5)
+					}while(c.cost <= 5);
 
 			return;
 		case Mine:
 					System.out.println("Mine: Trash a treasure care. Gain a treasure" +
 						"card to your hand costing up to 3 more than it.");
-
-						player.discard(Card.TREASURE)
-
+						// player.discard(getCard(player.hand, Card.Type.TREASURE));
+						// TODO this card
 		case Smithy:
 					System.out.println("Smithy: Gain +3 cards");
 	        for(int i = 0; i < 3; i++) player.drawCard();
@@ -230,11 +230,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 			if(cards.get(i).cardName.equals(cardName))
 					return 	cards.get(i);
 		}
-
 		return null;
-
-
-
 	}
 
 	   public static List<Card> filter(Iterable<Card> cards, Type target) {

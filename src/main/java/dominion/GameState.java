@@ -35,25 +35,25 @@ import java.util.TreeMap;
 public class GameState implements Cloneable{
 	   public List<Player> players = new ArrayList<Player>(); ;
 	   public List<Card> cards ;
-	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();	
-	   
-	   
+	   public HashMap<Card, Integer> gameBoard = new HashMap<Card, Integer>();
+
+
 	   public GameState(List<Card> cards) {
 		   this.cards=cards;
-		   
+
 	   }
 	   public void addPlayer(Player player) {
 		      players.add(player);
-	   }   
+	   }
 
 	   /*	   initializing all supplies, and shuffling deck and
 	   drawing starting hands for all players.  Check that 10 cards selected
 	   are in fact (different) kingdom cards, and that numPlayers is valid.*/
-	   
-	   public void initializeGame(){		
+
+	   public void initializeGame(){
 
 
-			      //initialize supply 
+			      //initialize supply
 
 			   //check number of players
 			   if (players.size() > 4 || players.size() < 2)
@@ -64,7 +64,7 @@ public class GameState implements Cloneable{
 			 //initialize supply for only two players
 				  int selectedKindom=0;
 				   int Kingdom_Cards_Selected=3;// We only defined Adventurer, smithy, and Village. We need to define more kingdom cards the Card class
-				   								// we should change 3 to the  exact of the number of 
+				   								// we should change 3 to the  exact of the number of
 				   								//kingdom cards. look at the requirements of the assignment-1
 		      while (selectedKindom < Kingdom_Cards_Selected) {
 			         int random = (int)  Randomness.random.nextInt(cards.size());//
@@ -74,9 +74,9 @@ public class GameState implements Cloneable{
 			         gameBoard.put(tmp, 10);
 			         selectedKindom++;
 			      }
-		        //set number of Curse cards the default number of players is 2			   
+		        //set number of Curse cards the default number of players is 2
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Curse), 10);
-		      
+
 		      //set number of Victory cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Province), 8);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Duchy), 8);
@@ -84,15 +84,15 @@ public class GameState implements Cloneable{
 		    //set number of Treasure cards
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Gold), 30);
 		      gameBoard.put(Card.getCard(cards, Card.CardName.Silver), 40);
-		      gameBoard.put(Card.getCard(cards, Card.CardName.Cooper), 46);
-		   
+		      gameBoard.put(Card.getCard(cards, Card.CardName.Copper), 46);
+
 
 		      for (Player player : players) {
 			         for (int i = 0; i < 7; i++)
-			            player.gain(Card.getCard(cards, Card.CardName.Cooper));
+			            player.gain(Card.getCard(cards, Card.CardName.Copper));
 			         for (int i = 0; i < 3; i++)
 			            player.gain(Card.getCard(cards,Card.CardName.Estate));
-			         
+
 			         player.numActions = 1;
 			         player.coins = 0;
 			         player.numBuys = 1;
@@ -102,14 +102,14 @@ public class GameState implements Cloneable{
 				    	  player.drawCard();
 				      }
 			      }
-	   
-		   
-		   
+
+
+
 	   }
-	   
+
 	   public HashMap<Player, Integer>  play() {
-			 
-		   	  int turn =0;	
+
+		   	  int turn =0;
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player player : players) {
@@ -144,7 +144,7 @@ public class GameState implements Cloneable{
 		      }
 		         return false;
 		   }
-	   
+
 	   /* Set HashMap  of each player and the score (remember ties!) */
 	   public HashMap<Player, Integer>  getWinners() {
 		   HashMap<Player, Integer> playerScore = new HashMap<Player, Integer>();
@@ -157,7 +157,7 @@ public class GameState implements Cloneable{
 
 		      return playerScore;
 		   }
-	   
+
 	   @Override
 	public String toString() {
 
@@ -176,23 +176,23 @@ public class GameState implements Cloneable{
 						+ treeMap.get(card) + "\n");
 		}
 		return sb.toString();
-	}   
-	   
+	}
+
 	   private GameState(List<Card> cards, List<Player> players, HashMap<Card, Integer> gameBoard) {
 		   this.cards=cards;
 		   this.players=players;
 		   this.gameBoard=gameBoard;
-		   
+
 	   }
 
 	   public GameState clone() throws CloneNotSupportedException {
 		   List<Player> clonePlayers = new ArrayList<Player>();
 		   List<Card> cloneCards = new ArrayList<Card>();
-		   HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card, Integer>();	
-		   
-		    for (Player player : players) 
+		   HashMap<Card, Integer> cloneGmeBoard = new HashMap<Card, Integer>();
+
+		    for (Player player : players)
 		    	clonePlayers.add((Player) player.clone());
-		    for (Card card : cards) 
+		    for (Card card : cards)
 		    	cloneCards.add((Card) card.clone());
 		    for (Card card : gameBoard.keySet())
 		    	cloneGmeBoard.put((Card) card.clone(),gameBoard.get(card));
