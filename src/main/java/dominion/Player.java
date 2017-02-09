@@ -50,6 +50,25 @@ public class Player implements Cloneable{
 		return toDraw;
 	}
 
+	
+	final Card grabSomeCards(){
+		if (deck.isEmpty()) {// Deck is empty
+			// Step 1 Shuffle the discard pile back into a deck
+			System.out.println("reshuffle the deck of the player "
+					+ player_username + " to draw FIVE cards");
+			while (discard.size() > 0) {
+				int ndx = (int) Randomness.nextRandomInt(discard.size());
+				// Move discard to deck
+				deck.add(discard.remove(ndx));
+			}
+		}
+		// grab a card from the deck
+		Card draw = deck.poll();
+		System.out.println("draw" + draw);
+
+		return draw;
+	}
+
 	   final void initializePlayerTurn() {
 		   //initialize first player's turn
 //		   state->numnumActions = 1;

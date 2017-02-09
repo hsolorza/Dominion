@@ -1,3 +1,8 @@
+/*
+  @author Hannah Solorzano
+  @version 2/12/17 Software Engineering 2 - Assignment 1
+*/
+
 package org.cs362.dominion;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,7 +21,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 		/** The Victory cards */
 		PROVIDENCE,DUCHY,ESTATE,CURSE,
 		/** The Kingdom cards */
-		ADVENTURER, SMITHY, VILLAGE;
+		ADVENTURER, AMBASSADOR, BARON, COUNCIL_ROOM, CUTPURSE, EMBARGO,
+		FEAST, MINE, SALVAGER, SMITHY, VILLAGE;
 	}
 	/**
 	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
@@ -56,7 +62,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 	public int getCost() {
 		return cost;
 	}
-
 
 	/**
 	 * Returns the treasureValue
@@ -121,10 +126,13 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 		switch(this.cardName) {
 		case Adventurer:
-	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
+	    	  //Reveal cards from your deck until you reveal 2 Treasure cards.
+					//Put those Treasure cards into your hand and discard the other
+					//revealed cards.
 	    	  System.out.println("TODO Adventurer Code***************************");
-	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
-	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
+	    	  System.out.println("Reveal cards from the player deck until player " +
+							"reveal 2 Treasure cards. Put those Treasure cards into player " +
+							"and and discard the other revealed cards.");
 
 			return;
 		case Ambassador:
@@ -145,30 +153,58 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 			return;
 		case Council_Room:
-					System.out.println("TODO Council_Room code ************************");
+				System.out.println("Council_Room: +4 Cards, +1 Buy. Each other "+
+						"player draws a card");
+
+				for(int i = 0; i < 4; i++) player.drawCard();
+
+				// TODO other players get a card
 			return;
 		case Cutpurse:
-					System.out.println("TODO Cutpurse code ****************************");
+					System.out.println("Cutpurse: Each other player discards a card");
+
+			 // TODO other players dicard a card
 			return;
 		case Embargo:
-					System.out.println("TODO Embargo code *****************************");
+					System.out.println("Embargo: +2 money. Trash this card, put an " +
+							"Embargo token on top of a supply pile");
+
+					player.coins = player.coins + 2;
+					player.discard(Card.Embargo);
+
+					GameState gs = player.gameState;
 			return;
 		case Feast:
-					System.out.println("TODO Feast code *******************************");
+					System.out.println("Feast: Trash this card. Gain a card worth up to" +
+						"5 money");
+
+					player.discard(Card.Feast);
+					Card c;
+					do{
+						c = grabSomeCards();
+						if(c.cost <= 5){
+							player.hand.add(c);
+							break;
+						}
+					}while(c.cost <= 5)
+
 			return;
 		case Mine:
 					System.out.println("TODO Mine code ********************************");
 
 		case Smithy:
-	         player.drawCard();
-	         player.drawCard();
-	         player.drawCard();
+					System.out.println("Smithy: Gain +3 cards");
+
+	        for(int i = 0; i < 3; i++) player.drawCard();
+
 			return;
 
 		case Village:
+					System.out.println("The player gets +2 Actions and draws 1 card.");
+
 	    	  player.drawCard();
 					player.numActions  = player.numActions + 2;
-	    	  System.out.println("The player gets +2 play Actions and draws 1 card.");
+
 			return;
 
 		default: return;
