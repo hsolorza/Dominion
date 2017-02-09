@@ -88,6 +88,11 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Curse,Type.VICTORY,		0, -1, 0);
 		ret.add(o);
+		o = new Card(CardName.Gardens, Type.VICTORY,  4, 666, 0);
+		ret.add(o);
+		o = new Card(CardName.Embargo, Type.Victory, 2, 0, 0);
+		ret.add(o);
+
 		/** The Kingdom cards , it should more than 10 cards*/
 
 		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);
@@ -96,6 +101,10 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Village,Type.ACTION,3,0,0);
 		ret.add(o);
+		o = new Card(CardName.Salvager, Type.ACTION, 4, 0, 0);
+		ret.add(o);
+
+
 		return ret;
 	}
 
