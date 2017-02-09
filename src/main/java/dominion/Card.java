@@ -88,8 +88,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Gardens, Type.VICTORY,  4, 666, 0);
 		ret.add(o);
-		o = new Card(CardName.Duchy, Type.VICTORY,  4, 666, 0);
-		ret.add(o);
 
 		/** The Kingdom cards , it should more than 10 cards*/
 
@@ -97,15 +95,23 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Ambassador,Type.ACTION, 	3, 0, 0);
 		ret.add(o);
-		o = new Card(CardName.Smithy,Type.ACTION, 4, 0, 0);
-		ret.add(o);
-		o = new Card(CardName.Village,Type.ACTION, 3, 0, 0);
-		ret.add(o);
-		o = new Card(CardName.Salvager, Type.ACTION, 4, 0, 0);
-		ret.add(o);
 		o = new Card(CardName.Baron, Type.ACTION, 4, 0, 0);
 		ret.add(o);
 		o = new Card(CardName.Council_Room, Type.ACTION, 5, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Cutpurse, Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Embargo, Type.ACTION, 2, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Feast,Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Mine,Type.ACTION, 5, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Salvager, Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Smithy,Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Village,Type.ACTION, 3, 0, 0);
 		ret.add(o);
 
 		return ret;
@@ -116,11 +122,43 @@ public final class Card implements Comparable<Card>, Cloneable{
 		switch(this.cardName) {
 		case Adventurer:
 	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
-	    	  System.out.println("TODO Adventurer Code******************************************");
+	    	  System.out.println("TODO Adventurer Code***************************");
 	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
 	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
 
 			return;
+		case Ambassador:
+				  System.out.println("TODO Ambassador code **************************");
+			return;
+		case Baron:
+					System.out.println("Baron: +1 Buy. If player chooses to discard an" +"
+					 		estate, +4 . Else gain an estate" );
+
+					player.numBuys = player.numBuys + 1;
+
+					if(player.discard(Card.Estate)){
+						player.coins = player.coins + 4;
+					}
+					else{
+						player.gain(Card.Estate);
+					}
+
+			return;
+		case Council_Room:
+					System.out.println("TODO Council_Room code ************************");
+			return;
+		case Cutpurse:
+					System.out.println("TODO Cutpurse code ****************************");
+			return;
+		case Embargo:
+					System.out.println("TODO Embargo code *****************************");
+			return;
+		case Feast:
+					System.out.println("TODO Feast code *******************************");
+			return;
+		case Mine:
+					System.out.println("TODO Mine code ********************************");
+
 		case Smithy:
 	         player.drawCard();
 	         player.drawCard();
@@ -132,10 +170,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 					player.numActions  = player.numActions + 2;
 	    	  System.out.println("The player gets +2 play Actions and draws 1 card.");
 			return;
-
-
-
-
 
 		default: return;
 		}
