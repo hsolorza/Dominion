@@ -12,14 +12,14 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 	public static enum CardName {
 		/** The Treasure cards */
-		Gold, Silver, Cooper, 
+		GOLD("Gold", TREASURE, 6, ), SILVER, COPPER,
 		/** The Victory cards */
-		Province,Duchy,Estate,Curse,
+		PROVIDENCE,DUCHY,ESTATE,CURSE,
 		/** The Kingdom cards */
-		Adventurer, Smithy, Village;
+		ADVENTURER, SMITHY, VILLAGE;
 	}
 	/**
-	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER, 
+	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
 	 * @param enum Type the type of the card (Victory, Treasure, or Kingdom
 	 * @param int cost the cost of the card
 	 * @param int score the score of the card, when the game is finished
@@ -62,12 +62,12 @@ public final class Card implements Comparable<Card>, Cloneable{
 	 * Returns the treasureValue
 	 */
 	public int getTreasureValue() {
-		return treasureValue; 
+		return treasureValue;
 	}
-	public int score() { 
-			return score; 
+	public int score() {
+			return score;
 		}
-	
+
 	public static List<Card> createCards() {
 		List<Card> ret = new LinkedList<Card>();
 
@@ -79,49 +79,49 @@ public final class Card implements Comparable<Card>, Cloneable{
 		o = new Card(CardName.Cooper, Type.TREASURE, 0, 0, 1);
 		ret.add(o);
 
-		/** The Victory cards  */ 
+		/** The Victory cards  */
 		o = new Card(CardName.Province,Type.VICTORY, 	8, 6, 0);
 		ret.add(o);
 		o = new Card(CardName.Duchy,Type.VICTORY,		5, 1, 0);
-		ret.add(o);		
+		ret.add(o);
 		o = new Card(CardName.Estate,Type.VICTORY,		2, 3, 0);
-		ret.add(o);		
+		ret.add(o);
 		o = new Card(CardName.Curse,Type.VICTORY,		0, -1, 0);
-		ret.add(o);				
-		/** The Kingdom cards , it should more than 10 cards*/ 	
-		
+		ret.add(o);
+		/** The Kingdom cards , it should more than 10 cards*/
+
 		o = new Card(CardName.Adventurer,Type.ACTION,6,0,0);
 		ret.add(o);
 		o = new Card(CardName.Smithy,Type.ACTION,4,0,0);
-		ret.add(o);	
+		ret.add(o);
 		o = new Card(CardName.Village,Type.ACTION,3,0,0);
-		ret.add(o);	
+		ret.add(o);
 		return ret;
 	}
-	
+
 	public void play(Player player, GameState state) {
-		
+
 		switch(this.cardName) {
 		case Adventurer:
 	    	  //Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.
 	    	  System.out.println("TODO Adventurer Code******************************************");
 	    	  System.out.println("Reveal cards from the player deck until player reveal 2 Treasure cards. " +
 	    	  		"Put those Treasure cards into player hand and discard the other revealed cards.");
-		
+
 			return;
 		case Smithy:
 	         player.drawCard();
 	         player.drawCard();
 	         player.drawCard();
 			return;
-			
+
 		case Village:
 	    	  System.out.println("TODO Village Code******************************************");
 	    	  System.out.println("The player draw +1 Card.");
 	    	  System.out.println("The player gets +2 play Actions.");
 			return;
-			
-			
+
+
 		default: return;
 		}
 	}
@@ -131,11 +131,11 @@ public final class Card implements Comparable<Card>, Cloneable{
 			if(cards.get(i).cardName.equals(cardName))
 					return 	cards.get(i);
 		}
-		
+
 		return null;
-		
-		
-		
+
+
+
 	}
 
 	   public static List<Card> filter(Iterable<Card> cards, Type target) {
@@ -176,6 +176,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 	}
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
-    } 
+    }
 
 }

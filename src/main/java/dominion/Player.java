@@ -23,7 +23,7 @@ public class Player implements Cloneable{
 
 	   final GameState gameState;
 
-	
+
 	public Player(GameState gameState,String player_username) {
 		this.player_username = player_username;
 		this.gameState=gameState;
@@ -50,7 +50,7 @@ public class Player implements Cloneable{
 		Collections.sort(hand);
 		return toDraw;
 	}
-	
+
 	   final void initializePlayerTurn() {
 		   //initialize first player's turn
 //		   state->numnumActions = 1;
@@ -70,7 +70,7 @@ public class Player implements Cloneable{
 		      discard.add(card);
 		      System.out.println("Player: "+this.player_username+" gains "+card);
 		      return true;
-		   }		   
+		   }
 		 //Discard hand
 	   public void discard(Card card) {
 		     hand.remove(card);
@@ -80,10 +80,10 @@ public class Player implements Cloneable{
 	   public void playKingdomCard() {
 		      while (numActions > 0) {
 		         List<Card> actionCards = Card.filter(hand, Type.ACTION);
-		   
+
 		         if (actionCards.size() == 0)
 		            return;
-		         
+
 		         Card c = (Card)actionCards.get(0);
 		         if (c == null)
 			           return;
@@ -95,7 +95,7 @@ public class Player implements Cloneable{
 			      c.play(this, gameState);
 		      }
 		   }
-	   final int scoreFor() { 
+	   final int scoreFor() {
 		   int score = 0;
 		   //score from hand
 		      for (Card c : hand)
@@ -107,38 +107,38 @@ public class Player implements Cloneable{
 		      for (Card c : deck)
 		    	  score += c.score();
 
-		      
-		    
+
+
 		      return score;
-	   }    
-	   
+	   }
+
 	   public void playTtreasureCard() {
 		   System.out.println(" --- --------------------------- --- ");
-    		System.out.println("TO-DO playTtreasureCard "); 
+    		System.out.println("TO-DO playTtreasureCard ");
     		System.out.println(" --- --------------------------- --- ");
 	   }
 	   public void buyCard() {
 		   System.out.println(" --- --------------------------- --- ");
-   			System.out.println("TO-DO buyCard "); 
-   			System.out.println(" --- --------------------------- --- ");   
+   			System.out.println("TO-DO buyCard ");
+   			System.out.println(" --- --------------------------- --- ");
 	   }
 	   final void endTurn() {
 		   System.out.println(" --- --------------------------- --- ");
-  			System.out.println("TO-DO endTurn "); 
-  			System.out.println(" --- --------------------------- --- ");      
+  			System.out.println("TO-DO endTurn ");
+  			System.out.println(" --- --------------------------- --- ");
 	   }
-	   
-	   
+
+
 	   public void printStateGame(){
 		   System.out.println(" --- " + this.player_username + " --- ");
 		   System.out.println(" --- --------------------------- --- ");
-     		System.out.println(this.gameState.toString()); 
+     		System.out.println(this.gameState.toString());
      		System.out.println(" --- --------------------------- --- ");
 	   }
 	   @Override
 		public String toString() {
 		     StringBuilder sb = new StringBuilder();
-		     
+
        	 sb.append(" --- " + this.player_username + " --- ");
        	 sb.append(" --- --------------------------- --- ");
 
@@ -149,12 +149,12 @@ public class Player implements Cloneable{
        	 sb.append("numActions: " + this.numActions);
        	 sb.append("coinss: " + this.coins);
        	 sb.append("numBuys: " + this.numBuys);
-       	 sb.append("\n");     
+       	 sb.append("\n");
 
 		     return sb.toString();
 
 		}
-	   
+
 	    protected Player clone() throws CloneNotSupportedException {
 	    	Player clonePlayer=(Player) super.clone();
 	    	clonePlayer.hand = new ArrayList<Card>(hand);// int hand[MAX_PLAYERS][MAX_HAND];
@@ -164,5 +164,5 @@ public class Player implements Cloneable{
 														// discard[MAX_PLAYERS][MAX_DECK];
 			clonePlayer.playedCards = new ArrayList<Card>(playedCards);
 			return clonePlayer;
-	    } 	   
+	    }
 }
