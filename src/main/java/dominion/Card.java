@@ -81,7 +81,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		ret.add(o);
 		o = new Card(CardName.Silver, Type.TREASURE, 3, 0, 2);
 		ret.add(o);
-		o = new Card(CardName.Cooper, Type.TREASURE, 0, 0, 1);
+		o = new Card(CardName.Copper, Type.TREASURE, 0, 0, 1);
 		ret.add(o);
 
 		/** The Victory cards  */
@@ -126,17 +126,29 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 		switch(this.cardName) {
 		case Adventurer:
-	    	  //Reveal cards from your deck until you reveal 2 Treasure cards.
-					//Put those Treasure cards into your hand and discard the other
-					//revealed cards.
-	    	  System.out.println("TODO Adventurer Code***************************");
-	    	  System.out.println("Reveal cards from the player deck until player " +
-							"reveal 2 Treasure cards. Put those Treasure cards into player " +
-							"and and discard the other revealed cards.");
+	    	  System.out.println("Adventurer: Reveal cards from the player deck" +
+					    "until player reveal 2 Treasure cards. Put those Treasure cards" +
+							"into player and discard the other revealed cards.");
+
+					int numOfTreasures = 0;
+
+					while(numOfTreasures != 2){
+						Card c = player.drawCard();
+						if(c.treasureValue != 0){
+							player.gain(c);
+							numOfTreasures++;
+						}
+						else player.discard(c);
+					}
 
 			return;
 		case Ambassador:
-				  System.out.println("TODO Ambassador code **************************");
+				  System.out.println("Ambassador: Reveal a card from your hand. Return"+
+						"up to 2 copies of it from your hand to the Supply. Then each"+
+						"player gains a copy of it.");
+
+						Card c = player.hand[0];
+						
 			return;
 		case Baron:
 					System.out.println("Baron: +1 Buy. If player chooses to discard an" +"
@@ -190,11 +202,13 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 			return;
 		case Mine:
-					System.out.println("TODO Mine code ********************************");
+					System.out.println("Mine: Trash a treasure care. Gain a treasure" +
+						"card to your hand costing up to 3 more than it.");
+
+						player.discard(Card.TREASURE)
 
 		case Smithy:
 					System.out.println("Smithy: Gain +3 cards");
-
 	        for(int i = 0; i < 3; i++) player.drawCard();
 
 			return;
