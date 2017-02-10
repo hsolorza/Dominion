@@ -50,7 +50,6 @@ public class Player implements Cloneable{
 		return toDraw;
 	}
 
-	
 	final Card grabSomeCards(){
 		if (deck.isEmpty()) {// Deck is empty
 			// Step 1 Shuffle the discard pile back into a deck
@@ -92,8 +91,8 @@ public class Player implements Cloneable{
 		 //Discard hand
 	   public void discard(Card card) {
 		     hand.remove(card);
-		      discard.add(card);
-		      System.out.println("Player:  "+player_username+" discards "+card);
+		     discard.add(card);
+		     System.out.println("Player:  "+player_username+" discards "+card);
 		   }
 	   public void playKingdomCard() {
 		      while (numActions > 0) {
