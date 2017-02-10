@@ -147,7 +147,11 @@ public final class Card implements Comparable<Card>, Cloneable{
 						"up to 2 copies of it from your hand to the Supply. Then each"+
 						"player gains a copy of it.");
 
-						// Card c = player.hand[0];
+						 Card c = player.hand.get(0);
+
+						 for(Player players : state.players){
+							 players.gain(getCard(state.cards, c.cardName));
+						 }
 
 			return;
 		case Baron:
@@ -213,8 +217,28 @@ public final class Card implements Comparable<Card>, Cloneable{
 		case Mine:
 					System.out.println("Mine: Trash a treasure care. Gain a treasure" +
 						"card to your hand costing up to 3 more than it.");
-						// player.discard(getCard(player.hand, Card.Type.TREASURE));
-						// TODO this card
+						player.discard(getCard(player.hand, CardName.Copper));
+						Card c;
+
+						do{
+							c = player.grabSomeCards();
+							if(c.cost <= 3){
+								player.hand.add(c);
+								break;
+							}
+						}while(c.cost <= 3);
+
+			return;
+		case Salvager:
+					System.out.println("Salvager: +1 buy. Trash a card, gain its cost in money.");
+
+					player.numBuys = player.numBuys + 1;
+
+					Card c;
+					c = player.hand.get(0);
+					player.coins = player.coins + c.cost;
+
+			return;
 		case Smithy:
 					System.out.println("Smithy: Gain +3 cards");
 	        for(int i = 0; i < 3; i++) player.drawCard();
