@@ -155,8 +155,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 			return;
 		case Baron:
-					// +1 Buy. If player choosed to discard an estate, +4. Else, gain an estate
-					System.out.println("Card Baron");
+					System.out.println("Card Baron: +1 Buy. If player choosed to discard an estate, +4. Else, gain an estate");
 
 					player.numBuys = player.numBuys + 1;
 

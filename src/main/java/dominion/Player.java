@@ -131,18 +131,18 @@ public class Player implements Cloneable{
 
 	   public void playTtreasureCard() {
 		   System.out.println(" --- --------------------------- --- ");
-    		System.out.println("TO-DO playTtreasureCard ");
+    		System.out.println("TO-DO playTreasureCard ");
     		System.out.println(" --- --------------------------- --- ");
 	   }
 	   public void buyCard() {
-		   System.out.println(" --- --------------------------- --- ");
-   			System.out.println("TO-DO buyCard ");
-   			System.out.println(" --- --------------------------- --- ");
+		   if(this.player.coins != 0){
+				 
+			 }
 	   }
 	   final void endTurn() {
-		   System.out.println(" --- --------------------------- --- ");
-  			System.out.println("TO-DO endTurn ");
-  			System.out.println(" --- --------------------------- --- ");
+		  	if(this.player.numBuys == 0 && this.player.numActions == 0){
+
+				}
 	   }
 
 
