@@ -135,12 +135,13 @@ public class Player implements Cloneable{
     		System.out.println(" --- --------------------------- --- ");
 	   }
 	   public void buyCard() {
-		   if(this.player.coins != 0){
-				 
+
+		   if(coins != 0){
+
 			 }
 	   }
 	   final void endTurn() {
-		  	if(this.player.numBuys == 0 && this.player.numActions == 0){
+		  	if(numBuys == 0 && numActions == 0){
 
 				}
 	   }

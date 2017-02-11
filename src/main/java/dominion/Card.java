@@ -146,12 +146,19 @@ public final class Card implements Comparable<Card>, Cloneable{
 				  System.out.println("Ambassador: Reveal a card from your hand. Return"+
 						"up to 2 copies of it from your hand to the Supply. Then each"+
 						"player gains a copy of it.");
+						 //
+						//  Card c = player.hand.get(0);
+						//  GameState g;
 
-						 Card c = player.hand.get(0);
+						 Card chosen = player.hand.get(0);
+                    state.gameBoard.put(chosen, state.gameBoard.get(chosen) + 1);
+                    for(Player p : state.players)
+                    {
+                        p.gain(chosen);
+                        state.gameBoard.put(chosen, state.gameBoard.get(chosen) - 1);
+                    }
+                    player.hand.remove(chosen);
 
-						 for(Player players : state.players){
-							 players.gain(getCard(state.cards, c.cardName));
-						 }
 
 			return;
 		case Baron:
@@ -176,17 +183,19 @@ public final class Card implements Comparable<Card>, Cloneable{
 				player.numBuys = player.numBuys + 1;
 
 
-				for ( Player otherPlayers : state.otherPlayers){
-					otherPlayers.drawCard();
-				}
+				for (Player players : state.players)
+                 {
+                     players.drawCard();
+ }
 
 			return;
 		case Cutpurse:
 					System.out.println("Cutpurse: Each other player discards a card");
 
-					 if(otherPlayers != player){
-						 otherPlayers.discard(getCard(otherPlayers.hand, CardName.Copper));
-					 }
+					for (Player players : state.players)
+							{
+									if(players != player && getCard(players.hand, CardName.Copper) != null) players.discard(getCard(player.hand, CardName.Copper));
+}
 
 			return;
 		case Embargo:
@@ -217,7 +226,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 					System.out.println("Mine: Trash a treasure care. Gain a treasure" +
 						"card to your hand costing up to 3 more than it.");
 						player.discard(getCard(player.hand, CardName.Copper));
-						Card c;
 
 						do{
 							c = player.grabSomeCards();
@@ -233,7 +241,6 @@ public final class Card implements Comparable<Card>, Cloneable{
 
 					player.numBuys = player.numBuys + 1;
 
-					Card c;
 					c = player.hand.get(0);
 					player.coins = player.coins + c.cost;
 

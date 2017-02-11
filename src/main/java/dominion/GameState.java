@@ -108,20 +108,20 @@ public class GameState implements Cloneable{
 	   }
 
 	   public HashMap<Player, Integer>  play() {
-
+					// 	Player player;
 		   	  int turn =0;
 		      while (!isGameOver()) {
 		    	  turn++;
-		         for (Player player : players) {
-		        	 	System.out.println("Player: "+ player.player_username + " is playing");
+		         for (Player players : players) {
+		        	 	System.out.println("Player: "+ players.player_username + " is playing");
 		   				//player p plays action card
-		        	 	player.playKingdomCard();
+		        	 	players.playKingdomCard();
 		        	 	//player plays treasure card
-		   			    player.playTtreasureCard();
+		   			    players.playTtreasureCard();
 		   			    //player buy cards
-		        	    player.buyCard();
+		        	    players.buyCard();
 		        	  //player ends turn
-		        	    player.endTurn();
+		        	    players.endTurn();
 		         }
 		         if(turn==2)
 		        	 break;
