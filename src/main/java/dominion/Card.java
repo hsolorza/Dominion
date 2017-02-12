@@ -179,7 +179,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 				System.out.println("Council_Room: +4 Cards, +1 Buy. Each other "+
 						"player draws a card");
 
-				for(int i = 0; i < 4; i++) player.drawCard();
+				for(int i = 1; i < 4; i++) player.drawCard();
 				player.numBuys = player.numBuys + 1;
 
 
@@ -229,7 +229,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 						do{
 							c = player.grabSomeCards();
 							if(c.cost <= 3){
-								player.hand.add(c);
+								// player.hand.add(c);
 								break;
 							}
 						}while(c.cost <= 3);

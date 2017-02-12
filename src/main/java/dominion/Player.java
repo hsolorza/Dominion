@@ -33,8 +33,8 @@ public class Player implements Cloneable{
 	final Card drawCard() {
 		if (deck.isEmpty()) {// Deck is empty
 			// Step 1 Shuffle the discard pile back into a deck
-			System.out.println("reshuffle the deck of the player "
-					+ player_username + " to draw FIVE cards");
+			// System.out.println("reshuffle the deck of the player "
+			// 		+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
 				int ndx = (int) Randomness.nextRandomInt(discard.size());
 				// Move discard to deck
@@ -45,7 +45,7 @@ public class Player implements Cloneable{
 		Card toDraw = deck.poll();
 		hand.add(toDraw);// Add card to hand and hand count automatically will
 							// be incremented since we use List
-		System.out.println("draw " + toDraw);
+		// System.out.println("draw " + toDraw);
 		Collections.sort(hand);
 		return toDraw;
 	}
@@ -53,8 +53,8 @@ public class Player implements Cloneable{
 	final Card grabSomeCards(){
 		if (deck.isEmpty()) {// Deck is empty
 			// Step 1 Shuffle the discard pile back into a deck
-			System.out.println("reshuffle the deck of the player "
-					+ player_username + " to draw FIVE cards");
+			// System.out.println("reshuffle the deck of the player "
+			// 		+ player_username + " to draw FIVE cards");
 			while (discard.size() > 0) {
 				int ndx = (int) Randomness.nextRandomInt(discard.size());
 				// Move discard to deck
@@ -63,7 +63,7 @@ public class Player implements Cloneable{
 		}
 		// grab a card from the deck
 		Card draw = deck.poll();
-		System.out.println("draw" + draw);
+		// System.out.println("draw" + draw);
 
 		return draw;
 	}
@@ -85,14 +85,14 @@ public class Player implements Cloneable{
 	 //card goes in discard,
 	   final boolean gain(Card card) {
 		      discard.add(card);
-		      System.out.println("Player: "+this.player_username+" gains "+card);
+		    //  System.out.println("Player: "+this.player_username+" gains "+card);
 		      return true;
 		   }
 		 //Discard hand
 	   public void discard(Card card) {
 		     hand.remove(card);
 		     discard.add(card);
-		     System.out.println("Player:  "+player_username+" discards "+card);
+		     //System.out.println("Player:  "+player_username+" discards "+card);
 		   }
 	   public void playKingdomCard() {
 		      while (numActions > 0) {
@@ -104,11 +104,11 @@ public class Player implements Cloneable{
 		         Card c = (Card)actionCards.get(0);
 		         if (c == null)
 			           return;
-		         System.out.println("Player.actionPhase Card:" + c.toString());
+		      //   System.out.println("Player.actionPhase Card:" + c.toString());
 
 			      playedCards.add(c);
 			      numActions -= 1;
-
+						hand.remove(c);
 			      c.play(this, gameState);
 		      }
 		   }
@@ -157,7 +157,6 @@ public class Player implements Cloneable{
 						discard(boughtCard);
 					}
 				}while(numBuys >= 1);
-
 
 	   }
 

@@ -110,7 +110,7 @@ public class GameState implements Cloneable{
 		      while (!isGameOver()) {
 		    	  turn++;
 		         for (Player players : players) {
-		        	 	System.out.println("Player: "+ players.player_username + " is playing");
+		        	 //	System.out.println("Player: "+ players.player_username + " is playing");
 		   				  //player p plays action card
 		        	 	players.playKingdomCard();
 		        	 	//player plays treasure card

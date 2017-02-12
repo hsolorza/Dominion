@@ -9,4 +9,4 @@ build:
 coverage: clean
 	mvn cobertura:cobertura
 run:
-java -jar target/hsolorza-1.0-SNAPSHOT.jar
+	java -jar target/hsolorza-1.0-SNAPSHOT.jar
