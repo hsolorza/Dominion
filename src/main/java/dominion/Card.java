@@ -183,19 +183,18 @@ public final class Card implements Comparable<Card>, Cloneable{
 				player.numBuys = player.numBuys + 1;
 
 
-				for (Player players : state.players)
-                 {
-                     players.drawCard();
- }
+				for (Player players : state.players){
+          players.drawCard();
+ 				}
 
 			return;
 		case Cutpurse:
-					System.out.println("Cutpurse: Each other player discards a card");
-
-					for (Player players : state.players)
-							{
-									if(players != player && getCard(players.hand, CardName.Copper) != null) players.discard(getCard(player.hand, CardName.Copper));
-}
+				System.out.println("Cutpurse: Each other player discards a card");
+				for (Player players : state.players){
+					if(players != player && getCard(players.hand, CardName.Copper) != null){
+							players.discard(getCard(player.hand, CardName.Copper));
+					}
+				}
 
 			return;
 		case Embargo:
@@ -247,7 +246,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 			return;
 		case Smithy:
 					System.out.println("Smithy: Gain +3 cards");
-	        for(int i = 0; i < 3; i++) player.drawCard();
+	        for(int i = 0; i < 3; i++){ player.drawCard();}
 
 			return;
 

@@ -130,34 +130,54 @@ public class Player implements Cloneable{
 	   }
 
 	   public void playTtreasureCard() {
-		   System.out.println(" --- --------------------------- --- ");
-    		System.out.println("TO-DO playTreasureCard ");
-    		System.out.println(" --- --------------------------- --- ");
-	   }
-	   public void buyCard() {
+		   List<Card> treasureCards = new ArrayList<Card>();
+			 treasureCards = Card.filter(treasureCards, Card.Type.TREASURE);
 
-		   if(coins != 0){
+			 for(Card c : treasureCards){
+				 playedCards.add(c);
+				 coins += c.getTreasureValue();
 
+				 hand.remove(c);
 			 }
 	   }
+
+	   public void buyCard() {
+		 		do{
+					Card boughtCard = gameState.cards.get(0);
+
+					if(gameState.cards.size() == 0){
+						System.out.println("There are no more cards to buy");
+					}
+					else if(coins < boughtCard.getCost()){
+						System.out.println("You cannot afford that card");
+					}
+					else{
+						coins -= boughtCard.getCost();
+						numBuys = numBuys - 1;
+						discard(boughtCard);
+					}
+				}while(numBuys >= 1);
+
+
+	   }
+
 	   final void endTurn() {
 			 // Put hand and played cards in discard, then
-			 //	reset the players actions, buys, and coins.
 
 		   for(Card c : hand){
-					discard.add(c);
-				}
+			 		discard.add(c);
+			 }
 
-
-				for(Card a : playedCards){
+		 	 for(Card a : playedCards){
 					discard.add(a);
-				}
-				// reset the players actions, buys, and coins
-				numBuys = 1;
-				numActions = 1;
-				coins = 0;
-				hand.clear();
-				playedCards.clear();
+			 }
+
+			 // reset the players actions, buys, and coins
+			 numBuys = 1;
+			 numActions = 1;
+			 coins = 0;
+			 hand.clear();
+			 playedCards.clear();
 	   }
 
 
