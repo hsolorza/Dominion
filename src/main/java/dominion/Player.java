@@ -141,9 +141,23 @@ public class Player implements Cloneable{
 			 }
 	   }
 	   final void endTurn() {
-		  	if(numBuys == 0 && numActions == 0){
+			 // Put hand and played cards in discard, then
+			 //	reset the players actions, buys, and coins.
 
+		   for(Card c : hand){
+					discard.add(c);
 				}
+
+
+				for(Card a : playedCards){
+					discard.add(a);
+				}
+				// reset the players actions, buys, and coins
+				numBuys = 1;
+				numActions = 1;
+				coins = 0;
+				hand.clear();
+				playedCards.clear();
 	   }
 
 
