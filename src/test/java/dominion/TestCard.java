@@ -31,7 +31,7 @@ public class TestCard{
 	}
 
 	// SMITHY TESTS//
-	@Test
+	 @Test
 	 public void SmithyTest(){
 
 		 // Test playing the Smithy card
@@ -62,7 +62,6 @@ public class TestCard{
 		 player1.hand.add(Card.getCard(cards, Card.CardName.Adventurer));
 		 player1.playKingdomCard();
 
-		 assertTrue(player1.deck.size() >= 1);
 		 assertTrue(player1.hand.size() >= 6);
 	 }
 	 @Test
@@ -162,9 +161,62 @@ public class TestCard{
 
 		 player1.playKingdomCard();
 
+		 assertEquals(player1.hand.size(), 5);
+	 }
+	 @Test
+	 public void Gardens(){
+		 assertEquals(player1.hand.size(), 5);
+
+		 player1.hand.add(Card.getCard(cards, Card.CardName.Great_Hall));
+		 player1.playKingdomCard();
+
 		 assertEquals(player1.hand.size(), 6);
+	 }
+	 @Test
+	 public void Great_Hall(){
+		  assertEquals(player1.hand.size(), 5);
+			assertEquals(player1.numActions, 1);
+
+			player1.hand.add(Card.getCard(cards, Card.CardName.Great_Hall));
+			player1.playKingdomCard();
+
+			assertEquals(player1.hand.size(), 6);
+			assertEquals(player1.numActions, 1);
+	 }
+	 @Test
+	 public void Mine(){
+		 List<Card> before = Card.filter(player1.hand, Card.Type.TREASURE);
+		 assertEquals(player1.hand.size(), 5);
+		 assertEquals(player1.discard.size(), 0);
+		 player1.hand.add(Card.getCard(cards, Card.CardName.Mine));
+		 player1.playKingdomCard();
+
+		 List<Card> after = Card.filter(player1.hand, Card.Type.TREASURE);
+		 assertEquals(player1.hand.size(), 4);
+		 assertEquals(player1.discard.size(), 1);
+		 assertTrue(before.size() != after.size());
+	 }
+	 @Test
+	 public void Salvager(){
+		 assertEquals(player1.numBuys, 1);
+		 assertEquals(player1.coins, 0);
+
+		 player1.hand.add(Card.getCard(cards, Card.CardName.Salvager));
+		 player1.playKingdomCard();
+
+		 assertEquals(player1.numBuys, 2);
 
 	 }
+	 @Test
+	 public void Village(){
+		 assertEquals(player1.hand.size(), 5);
+		 assertEquals(player1.numActions, 1);
 
+		 player1.hand.add(Card.getCard(cards, Card.CardName.Village));
+		 player1.playKingdomCard();
+
+		 assertEquals(player1.hand.size(), 6);
+		 assertEquals(player1.numActions, 2);
+	 }
 
 }

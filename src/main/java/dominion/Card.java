@@ -22,7 +22,7 @@ public final class Card implements Comparable<Card>, Cloneable{
 		Province, Duchy, Estate, Curse, Gardens,
 		/** The Kingdom cards */
 		Adventurer, Ambassador, Baron, Council_Room, Cutpurse, Embargo,
-		Feast, Mine, Salvager, Smithy, Village;
+		Feast, Great_Hall, Mine, Salvager, Smithy, Village;
 	}
 	/**
 	 * @param enum CardName the name of the card (GOLD, SILVER, COPPER,
@@ -109,6 +109,8 @@ public final class Card implements Comparable<Card>, Cloneable{
 		o = new Card(CardName.Embargo, Type.ACTION, 2, 0, 0);
 		ret.add(o);
 		o = new Card(CardName.Feast,Type.ACTION, 4, 0, 0);
+		ret.add(o);
+		o = new Card(CardName.Great_Hall, Type.ACTION, 3, 1, 0);
 		ret.add(o);
 		o = new Card(CardName.Mine,Type.ACTION, 5, 0, 0);
 		ret.add(o);
@@ -215,10 +217,18 @@ public final class Card implements Comparable<Card>, Cloneable{
 					do{
 						c = player.grabSomeCards();
 						if(c.cost <= 5){
-							player.hand.add(c);
+							// player.hand.add(c);
 							break;
 						}
 					}while(c.cost <= 5);
+
+			return;
+		case Gardens:
+				// Do nothing
+		  return;
+		case Great_Hall:
+					player.drawCard();
+					player.numActions = player.numActions + 1;
 
 			return;
 		case Mine:
