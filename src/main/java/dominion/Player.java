@@ -151,6 +151,7 @@ public class Player implements Cloneable{
 					}
 					else if(coins < boughtCard.getCost()){
 						System.out.println("You cannot afford that card");
+						return;
 					}
 					else{
 						coins -= boughtCard.getCost();
