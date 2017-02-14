@@ -1,4 +1,4 @@
-package org.cs362.dominion;
+package dominion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
