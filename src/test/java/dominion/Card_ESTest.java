@@ -19,7 +19,7 @@ import org.evosuite.runtime.EvoRunner;
 import org.evosuite.runtime.EvoRunnerParameters;
 import org.junit.runner.RunWith;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false) 
 public class Card_ESTest extends Card_ESTest_scaffolding {
 
   @Test(timeout = 4000)
@@ -124,10 +124,10 @@ public class Card_ESTest extends Card_ESTest_scaffolding {
   public void test11()  throws Throwable  {
       Card.CardName card_CardName0 = Card.CardName.Gardens;
       // Undeclared exception!
-      try { 
+      try {
         Card.getCard((List<Card>) null, card_CardName0);
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -142,7 +142,7 @@ public class Card_ESTest extends Card_ESTest_scaffolding {
       Card.CardName card_CardName0 = Card.CardName.Curse;
       Card card0 = Card.getCard(list0, card_CardName0);
       assertNotNull(card0);
-      
+
       GameState gameState0 = new GameState(list0);
       Player player0 = new Player(gameState0, "W-6");
   }
@@ -161,10 +161,10 @@ public class Card_ESTest extends Card_ESTest_scaffolding {
       hashSet0.add((Card) null);
       Card.Type card_Type0 = Card.Type.TREASURE;
       // Undeclared exception!
-      try { 
+      try {
         Card.filter(hashSet0, card_Type0);
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)

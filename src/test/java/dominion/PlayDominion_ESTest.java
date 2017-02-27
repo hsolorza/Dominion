@@ -16,7 +16,7 @@ import org.evosuite.runtime.System;
 import org.evosuite.runtime.TooManyResourcesException;
 import org.junit.runner.RunWith;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false) 
 public class PlayDominion_ESTest extends PlayDominion_ESTest_scaffolding {
 
   @Test(timeout = 4000)
@@ -24,10 +24,10 @@ public class PlayDominion_ESTest extends PlayDominion_ESTest_scaffolding {
       Random.setNextRandom(Integer.MIN_VALUE);
       String[] stringArray0 = new String[5];
       // Undeclared exception!
-      try { 
+      try {
         PlayDominion.main(stringArray0);
         fail("Expecting exception: System.SystemExitException");
-      
+
       } catch(System.SystemExitException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -40,10 +40,10 @@ public class PlayDominion_ESTest extends PlayDominion_ESTest_scaffolding {
   public void test1()  throws Throwable  {
       String[] stringArray0 = new String[5];
       // Undeclared exception!
-      try { 
+      try {
         PlayDominion.main(stringArray0);
         fail("Expecting exception: TooManyResourcesException");
-      
+
       } catch(TooManyResourcesException e) {
          //
          // Loop has been executed more times than the allowed 10000

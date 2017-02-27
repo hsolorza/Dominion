@@ -21,7 +21,7 @@ import org.evosuite.runtime.EvoRunnerParameters;
 import org.evosuite.runtime.TooManyResourcesException;
 import org.junit.runner.RunWith;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false) 
 public class Player_ESTest extends Player_ESTest_scaffolding {
 
   @Test(timeout = 4000)
@@ -91,10 +91,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       player0.numActions = 6;
       player0.hand = list0;
       // Undeclared exception!
-      try { 
+      try {
         player0.playKingdomCard();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -119,7 +119,7 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Card card0 = Card.getCard(gameState0.cards, card_CardName0);
       player0.gain(card0);
       // Undeclared exception!
-      try { 
+      try {
         player0.scoreFor();
        //  fail("Expecting exception: NullPointerException");
        // Unstable assertion
@@ -148,10 +148,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Player player0 = new Player((GameState) null, "");
       player0.drawCard();
       // Undeclared exception!
-      try { 
+      try {
         player0.scoreFor();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -164,10 +164,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
   public void test11()  throws Throwable  {
       Player player0 = new Player((GameState) null, "mJ\u0006rrEW,{hP~ ToQ<");
       // Undeclared exception!
-      try { 
+      try {
         player0.printStateGame();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -183,10 +183,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Player player0 = new Player(gameState0, "]4071<>.$h 1P4m");
       player0.drawCard();
       // Undeclared exception!
-      try { 
+      try {
         player0.playTtreasureCard();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -205,10 +205,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       player0.buyCard();
       player0.hand = list0;
       // Undeclared exception!
-      try { 
+      try {
         player0.playKingdomCard();
         fail("Expecting exception: TooManyResourcesException");
-      
+
       } catch(TooManyResourcesException e) {
          //
          // Loop has been executed more times than the allowed 10000
@@ -223,10 +223,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       GameState gameState0 = new GameState((List<Card>) linkedList0);
       Player player0 = new Player(gameState0, "InvalidXGCFields");
       // Undeclared exception!
-      try { 
+      try {
         player0.initializePlayerTurn();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -242,10 +242,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       player0.discard = gameState0.cards;
       player0.playedCards = gameState0.cards;
       // Undeclared exception!
-      try { 
+      try {
         player0.endTurn();
         fail("Expecting exception: ConcurrentModificationException");
-      
+
       } catch(ConcurrentModificationException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -261,10 +261,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Player player0 = new Player(gameState0, "");
       player0.drawCard();
       // Undeclared exception!
-      try { 
+      try {
         player0.drawCard();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -278,10 +278,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Player player0 = new Player(gameState0, "C.heK\"v");
       player0.discard = null;
       // Undeclared exception!
-      try { 
+      try {
         player0.discard((Card) null);
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -296,10 +296,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Player player0 = new Player(gameState0, "");
       player0.deck = null;
       // Undeclared exception!
-      try { 
+      try {
         player0.clone();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -317,10 +317,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       player0.coins = 10;
       player0.numBuys = 1354;
       // Undeclared exception!
-      try { 
+      try {
         player0.buyCard();
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
@@ -475,10 +475,10 @@ public class Player_ESTest extends Player_ESTest_scaffolding {
       Player player1 = player0.clone();
       player1.discard = null;
       // Undeclared exception!
-      try { 
+      try {
         player1.gain((Card) null);
         fail("Expecting exception: NullPointerException");
-      
+
       } catch(NullPointerException e) {
          //
          // no message in exception (getMessage() returned null)
