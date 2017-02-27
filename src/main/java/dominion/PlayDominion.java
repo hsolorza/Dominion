@@ -15,25 +15,22 @@ public class PlayDominion {
 
 		List<Card> cards;
 		GameState state;
+		Random gen = new Random();
+		int numPlayers = gen.nextInt(3)+2;
 
 		cards = new ArrayList<Card>(Card.createCards());
 		state = new GameState(cards);
+		String[] names = {"pOne", "pTwo", "pThree", "pFour"};
 
-		Player player = new Player(state, "player-1");
-
-		state.addPlayer(player);
-		System.out.println("Added first player!");
-
-
-		player = new Player(state, "player-2");
-		state.addPlayer(player);
-		System.out.println("Added second player!");
+		for(int i = 0; i < numPlayers; i++){
+			Player player = new Player(state, names[i]);
+			state.addPlayer(player);
+		}
 
 		//Initialize the game!
 		System.out.println("initializing the game!");
 	 	state.initializeGame();
 		System.out.println("Finished initializing the game!");
-
 
 		HashMap<Player, Integer> winners = state.play();
 		System.out.println ("Finished game.\n");
@@ -45,8 +42,6 @@ public class PlayDominion {
 			System.out.printf("         ");
 		}
 		System.out.println("");
-		//  player.printStateGame();
-
 
 		System.exit(0);
 
