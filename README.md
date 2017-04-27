@@ -1,3 +1,5 @@
+OSU Software Engineering Winter 2016
+
 To run code:
 Go into src/main/java then do `javac dominion/*.java `  then `java dominion/PlayDominion.java`.(It is played by bots)
 
